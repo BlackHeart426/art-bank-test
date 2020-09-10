@@ -1,5 +1,38 @@
 .App {
   text-align: center;
+
+
+}
+
+.App-container {
+  paddingTop: 30;
+  width: calc(100vw - 300px);
+  height: 100%;
+  margin: 0 auto;
+  maxWidth: 1200px;
+}
+
+.App-title {
+
+}
+
+.App-action {
+  text-align: right;
+}
+
+
+.App-wrapper {
+  padding-top: 50px;
+}
+
+.selected-user {
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.App-table {
+  overflow-x: scroll;
 }
 
 .App-logo {
