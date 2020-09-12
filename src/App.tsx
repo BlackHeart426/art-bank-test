@@ -22,6 +22,8 @@ interface IDataUser {
   DOCTYPENAME: string | null,
 }
 
+export const FIO = ['LASTNAME', 'FIRSTNAME', 'PATRONYMIC']
+
 export const dataUser = {
   CARD: null,
   LASTNAME: null,
@@ -81,6 +83,7 @@ function App() {
             ({...obj, [response.data.metaData[index].name]: value}), {})
       })
       setDataUsers(dataUsersArr)
+      console.log(dataUsersArr)
     } catch (e) {
       console.log(e)
     }
@@ -96,77 +99,77 @@ function App() {
             <div className="App-action">
               <a className="waves-effect waves-light btn" onClick={onShowAddUser}>Добавить клиента</a>
             </div>
-            <div className="App-add-user-content" style={showAddUser ? {display: "block"} : {display: "none"}}>
+            {showAddUser && <div className="App-add-user-content">
               <div className="row">
                 <form className="col s12">
                   <div className="row">
                     <div className="input-field col s3">
                       <input id="CARD" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="CARD">CARD</label>
+                      <label htmlFor="CARD">CARD</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="LASTNAME" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="LASTNAME">LASTNAME</label>
+                      <label htmlFor="LASTNAME">LASTNAME</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="FIRSTNAME" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="FIRSTNAME">FIRSTNAME</label>
+                      <label htmlFor="FIRSTNAME">FIRSTNAME</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="PATRONYMIC" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="PATRONYMIC">PATRONYMIC</label>
+                      <label htmlFor="PATRONYMIC">PATRONYMIC</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="IDPERSON" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="IDPERSON">IDPERSON</label>
+                      <label htmlFor="IDPERSON">IDPERSON</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="STATUSNAME" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="STATUSNAME">STATUSNAME</label>
+                      <label htmlFor="STATUSNAME">STATUSNAME</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="ACC1NUM" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="ACC1NUM">ACC1NUM</label>
+                      <label htmlFor="ACC1NUM">ACC1NUM</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="CARDTEMPLNAME" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="CARDTEMPLNAME">CARDTEMPLNAME</label>
+                      <label htmlFor="CARDTEMPLNAME">CARDTEMPLNAME</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="ORGNAMESHORT" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="ORGNAMESHORT">ORGNAMESHORT</label>
+                      <label htmlFor="ORGNAMESHORT">ORGNAMESHORT</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="PERSONTYPENAME" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="PERSONTYPENAME">PERSONTYPENAME</label>
+                      <label htmlFor="PERSONTYPENAME">PERSONTYPENAME</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="CURRNAME" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="CURRNAME">CURRNAME</label>
+                      <label htmlFor="CURRNAME">CURRNAME</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="IDCARD" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="IDCARD">IDCARD</label>
+                      <label htmlFor="IDCARD">IDCARD</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="BIRTHDATE" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="BIRTHDATE">BIRTHDATE</label>
+                      <label htmlFor="BIRTHDATE">BIRTHDATE</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="DOCSERIES" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="DOCSERIES">DOCSERIES</label>
+                      <label htmlFor="DOCSERIES">DOCSERIES</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="DOCNUM" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="DOCNUM">DOCNUM</label>
+                      <label htmlFor="DOCNUM">DOCNUM</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="IDTASKAUTHSTATUS" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="IDTASKAUTHSTATUS">IDTASKAUTHSTATUS</label>
+                      <label htmlFor="IDTASKAUTHSTATUS">IDTASKAUTHSTATUS</label>
                     </div>
                     <div className="input-field col s3">
                       <input id="DOCTYPENAME" type="text" className="validate" onBlur={handleSaveInput}/>
-                        <label htmlFor="DOCTYPENAME">DOCTYPENAME</label>
+                      <label htmlFor="DOCTYPENAME">DOCTYPENAME</label>
                     </div>
                     <div className="App-action">
                       <a className="waves-effect waves-light btn" onClick={onSaveDataUser}>Сохранить клиента</a>
@@ -175,22 +178,24 @@ function App() {
                 </form>
               </div>
             </div>
+            }
             <div className="App-table">
               <table className="striped">
                 <thead>
                 <tr>
                   {metaData.map((item: any, index: number) => (
-                      <th key={index}>{item}</th>
+                      <th key={index}  style={{textAlign: "center"}}>{item}</th>
                   ))}
-                  <th>ACTION</th>
+                  <th style={{textAlign: "center"}}>ACTION</th>
                 </tr>
                 </thead>
                 <tbody>
                 {dataUsers.map((dataUser: any, dataUserIndex: number) => (
                     <tr key={dataUserIndex} className="selected-user">
-                      {Object.values(dataUser).map((item: any, itemIndex: number) => (
-                          <td  key={itemIndex}>{( typeof item === "object") ?  '' :  item }</td>
-                      ))}
+                      {Object.keys(dataUser).map((item: any, itemIndex: number) => {
+                        return <td key={itemIndex}
+                            style={FIO.includes(item) ? {textAlign: "center"} : {textAlign: "left"}}>{(typeof dataUser[item] === "object") ? '' : dataUser[item]}</td>
+                      })}
                       <td>
                         <a
                             onClick={() => onRemoveUser(dataUserIndex)}
